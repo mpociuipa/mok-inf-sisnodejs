@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Moksleivių informacinė sistema</title>
+</head>
+<body>
+  <h1>Moksleivių informacinė sistema</h1>
+  <form action="/search" method="post">
+    <input type="text" name="firstname" placeholder="Vardas">
+    <input type="text" name="lastName" placeholder="Pavardė">
+    <input type="text" name="class" placeholder="Klasė">
+    <button type="submit">Ieškoti</button>
+  </form>
+  <a href="/sort/lastname">Rikiuoti pagal pavardę</a><br>
+  <a href="/average">Apskaičiuoti vidurkius</a>
+  <div class="students">
+    <% students.forEach(student => { %>
+      <div class="student-card">
+        <p><strong>Vardas:</strong> <%= student.firstname %></p>
+        <p><strong>Pavardė:</strong> <%= student.lastName %></p>
+        <p><strong>Klasė:</strong> <%= student.class %></p>
+        <a href="/student/<%= student.id %>">Detali informacija</a>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>

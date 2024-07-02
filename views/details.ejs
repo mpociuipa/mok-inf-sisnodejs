@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Moksleivio informacija</title>
+</head>
+<body>
+  <h1>Moksleivio detali informacija</h1>
+  <p><strong>Vardas:</strong> <%= student.firstname %></p>
+  <p><strong>Pavardė:</strong> <%= student.lastName %></p>
+  <p><strong>Klasė:</strong> <%= student.class %></p>
+  <p><strong>Pažymiai:</strong></p>
+  <ul>
+    <% Object.entries(student.subjects_grades).forEach(([subject, grade]) => { %>
+       <li><%= subject %>: <%= grade %></li>
+    <% }) %>
+  </ul>
+  <p><strong>Vidurkis:</strong> <%= (Object.values(student.subjects_grades).reduce((sum, val) => sum + val, 0) / Object.values(student.subjects_grades).length).toFixed(2) %></p>
+  <a href="/">Atgal</a>
+</body>
+</html>
